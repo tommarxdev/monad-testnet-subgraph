@@ -160,3 +160,20 @@ type WhitelistUpdated @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type Token @entity {
+  id: ID!                # Unique identifier (tokenId)
+  tokenId: BigInt!       # Token ID (from Transfer event)
+  owner: Bytes!          # Owner's address
+  contract: Bytes!       # Contract address of the NFT
+  tokenURI: String       # Metadata URI
+  blockNumber: BigInt!   # Block number where this token was last updated
+  blockTimestamp: BigInt! # Timestamp of the last event
+  transactionHash: Bytes! # Transaction hash of the last event
+}
+
+type GlobalSettings @entity {
+  id: ID!                # Always a single ID, e.g. "global"
+  baseURI: String        # The latest base URI
+}
+
